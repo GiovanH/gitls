@@ -1,7 +1,7 @@
-import os
+# import os
 import glob
 import git
-import traceback
+# import traceback
 
 import colorama
 
@@ -21,7 +21,14 @@ for d in glob.glob("**/"):
 
         dirty = repo.is_dirty()
 
+        remote = True
+        try:
+            rremote = repo.remote()
+        except ValueError:
+            remote = False
+
         status = "".join([
+            # colorama.Fore.RED + "l" if dirty else colorama.Fore.GREEN + "r",
             colorama.Fore.RED + "d" if dirty else colorama.Fore.GREEN + "c"
         ])
     except git.exc.InvalidGitRepositoryError as e:
