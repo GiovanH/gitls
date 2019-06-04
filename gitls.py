@@ -32,10 +32,11 @@ for d in glob.glob("**/"):
             colorama.Fore.RED + "d" if dirty else colorama.Fore.GREEN + "c"
         ])
     except git.exc.InvalidGitRepositoryError as e:
-        status = colorama.Fore.RESET + " " * flaglen
+        status = colorama.Fore.LIGHTBLACK_EX + " " * flaglen
     except git.exc.GitCommandError:
         # traceback.print_exc()
         # print(d)
-        status = colorama.Fore.CYAN + "x" * flaglen
+        status = colorama.Fore.YELLOW + "x" * flaglen
 
     print(" ", status, d)
+print(colorama.Fore.RESET)
